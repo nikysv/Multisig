@@ -1,21 +1,23 @@
 from .entities.User import User
 
-
-class ModelUser():
+class ModelUser:
 
     @classmethod
     def login(self, db, user):
         try:
             cursor = db.connection.cursor()
-            sql = """SELECT id, username, password, fullname FROM user 
-                    WHERE username = '{}'""".format(user.username)
+            sql = ("SELECT id, username, password, fullname FROM user "
+                   "WHERE username = '{}'").format(user.username)
             cursor.execute(sql)
             row = cursor.fetchone()
-            if row != None:
-                user = User(row[0], row[1], User.check_password(row[2], user.password), row[3])
-                return user
+            if row is not None:
+                if row[2] == user.password:  # Comparación directa de contraseñas
+                    logged_user = User(row[0], row[1], True, row[3])
+                    return logged_user
+                else:
+                    return None  # Contraseña incorrecta
             else:
-                return None
+                return None  # Usuario no encontrado
         except Exception as ex:
             raise Exception(ex)
 
@@ -26,7 +28,7 @@ class ModelUser():
             sql = "SELECT id, username, fullname FROM user WHERE id = {}".format(id)
             cursor.execute(sql)
             row = cursor.fetchone()
-            if row != None:
+            if row is not None:
                 return User(row[0], row[1], None, row[2])
             else:
                 return None

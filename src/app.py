@@ -59,11 +59,25 @@ def logout():
 def home():
     return render_template('index.html')
 
+@app.route('/proposal')
+def proposal():
+    return render_template('proposal.html')
+
+@app.route('/votar')
+def votar():
+    # Definir una propuesta de ejemplo
+    propuesta = ["Propuesta 1", "Detalles adicionales de la propuesta"]
+    return render_template('votar.html', propuesta=propuesta)
+
+
 
 @app.route('/protected')
 @login_required
 def protected():
     return "<h1>Esta es una vista protegida, solo para usuarios autenticados.</h1>"
+
+
+
 
 
 def status_401(error):

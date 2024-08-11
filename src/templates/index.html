@@ -16,12 +16,12 @@
     <section id="content">
         <nav>
             <img src="{{ url_for('static', filename='img/people.png') }}" alt="User Image">
-            <h2>nombre</h2>
+            <h2>Lucy</h2>
         </nav>
 
         <main>
             <div class="head-title">
-                <h1>Billetera colaborativa</h1>
+                <h1>MultiSig Wallet</h1>
             </div>
 
             <div class="box-info">
@@ -30,6 +30,7 @@
                     <h3>Saldo actual</h3>
                     <p id="balance">0 ETH</p> <!-- Mostrará el saldo en ETH -->
                 </span>
+                <a href="{{ url_for('proposal') }}"><button>Proponer</button></a>
             </div>
 
             <div class="table-data">
@@ -43,10 +44,6 @@
                                 <th>Usuario</th>
                                 <th>Fecha</th>
                                 <th>Motivo</th>
-                                <th>Transacción</th>
-                                <th>Valor</th>
-                                <th>Costo de Gas</th>
-                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody id="transactions">
@@ -56,40 +53,33 @@
                                     <p>John Doe</p>
                                 </td>
                                 <td>01-10-2021</td>
-                                <td><span class="status completed">Mesas</span></td>
+                                <td><span class="status completed">Retiro para pagos de servicios</span></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="{{ url_for('static', filename='img/people.png') }}" alt="User Image">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Papel</span></td>
+                                <td>01-08-2024</td>
+                                <td><span class="status completed">Retiro para compras</span></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="{{ url_for('static', filename='img/people.png') }}" alt="User Image">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Macabro plan para matar competencia</span></td>
+                                <td>01-07-2024</td>
+                                <td><span class="status completed">Retiro de emergencia</span></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="{{ url_for('static', filename='img/people.png') }}" alt="User Image">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">hola</span></td>
+                                <td>01-06-2024</td>
+                                <td><span class="status completed">Retiro</span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ url_for('static', filename='img/people.png') }}" alt="User Image">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Respedir empleados</span></td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>
@@ -100,14 +90,19 @@
                         <i class='bx bx-filter'></i>
                     </div>
                     <ul class="todo-list">
-                        <a href="#" class="votacion">
-                            <li class="completed">
-                                <h2>Votacion en Curso</h2>
-                                <p>tiempo: 0:00:00</p>
-                                <i class='bx bx-time-five'></i>
-                            </li>
-                        </a>
+                        <li class="completed votacion">
+                            <h2>Votacion en Curso</h2>
+                            <a href="{{ url_for('votar') }}">
+                                <button style="margin-left: 10px; padding: 5px 10px; font-size: 12px;">
+                                    Ir a Votación
+                                </button>
+                            </a>
+                            <i class='bx bx-time-five'></i>
+                        </li>
                     </ul>
+                    
+                    
+                    
                 </div>
             </div>
         </main>
